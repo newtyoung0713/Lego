@@ -1,0 +1,119 @@
+body {
+  font-size: 1.5em;
+  width: 100%;
+}
+
+.navbar {
+  background-color: gray;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.navbar a {
+  margin: 0 10px;
+}
+
+.sub-navbar {
+  display: flex;
+  margin: 0 10px;
+  position: fixed;
+  right: 0;
+}
+
+.sub-navbar-dropbox {
+  position: relative;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+}
+
+.list {
+  position: absolute;
+  right: 0;
+}
+
+.list li {
+  width: 10rem;
+}
+
+.blurb-lego-card {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.blurb-lego-card p {
+  width: 25rem;
+}
+
+.container {
+  margin-top: 1.5em;
+}
+
+.lego-card {
+  border: 1px solid white;
+  border-radius: 0.5em;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lego-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 0.3em;
+}
+
+.view-btn {
+  color: red;
+  background-color: lime;
+  border: 1px solid gray;
+  border-radius: 0.5em;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.view-all-btn {
+  color: red;
+  background-color: maroon;
+  border: 1px solid gray;
+  border-radius: 0.5em;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.iLike {
+  text-align: center;
+}
+
+.iLike p {
+  margin: 20px 0;
+}
+
+.iLike-img {
+  width: 90%;
+  height: 70%;
+}
+
+.about-me p {
+  margin: 10px;
+}
+
+.err-msg {
+  margin-top: 6em;
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+}
+
+#card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 90%;
+  margin: auto;
+}

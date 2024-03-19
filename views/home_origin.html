@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/main.css">
+  <title>Lego Collection</title>
+  <style>
+    body {
+      width: 100%;
+    }
+
+    .logo{
+      background: #B459CF;
+      background: linear-gradient(to right, #B459CF 0%, #FF4C4C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .navbar {
+      background-color: gray;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .navbar a, .navbar label {
+      padding-left: 50px;
+    }
+
+    #card-container {
+      background-color: lightblue;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 90%;
+      margin: auto;
+    }
+
+    .lego-img {
+      width: 250px;
+      height: 250px;
+    }
+
+    li {
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="text-lg font-bold">Lego</a>
+    <a href="/about">About</a>
+    
+    <div class="dropdown">
+      <summary class="lego">
+        Theme
+      </summary>
+      <button class="dropbtn">Theme</button>
+      <div class="dropdown-content">
+        <a href="/lego/sets?theme=Lion Knights">Lion Knights</a>
+        <a href="/lego/sets?theme=Classic Town">Classic Town</a>
+        <a href="/lego/sets?theme=Technic">Technic</a>
+      </div>
+
+      <label for="legoTheme">Theme:</label>
+      <!-- <select name="legoTheme" id="lego" onchange="location = this.value"> -->
+      <select name="legoTheme" id="lego">
+        <!-- <a><option value="/lego/sets?theme=Lion Knights">Lion Knights</a>
+        <a><option value="/lego/sets?theme=Classic Town">Classic Town</a>
+        <a><option value="/lego/sets?theme=Technic">Technic</a> -->
+        <a href="/lego/sets?theme=Lion Knights"><option value="Lion Knights">Lion Knights</a>
+        <a href="/lego/sets?theme=Classic Town"><option value="Classic Town">Classic Town</a>
+        <a href="/lego/sets?theme=Technic"><option value="Technic">Technic</a>
+      </select>
+    </div>
+  </nav>
+
+  <div class="container mx-auto">
+    <h3>Explore the Lego collection</h3>
+    <a href="/lego/sets" class="btn"><button>someTheme1</button></a>
+  </div>
+
+  <div id="card-container">
+    <div class="lego-card">
+      <a href="https://rebrickable.com/sets/0011-3"><img class="lego-img" src="https://cdn.rebrickable.com/media/sets/0011-3.jpg" alt="Lion Knights"></a>
+      <p>Lion Knights</p>
+      <article>This is a lego set named Lion Knights.</article>
+      <button onclick="location.href='/lego/sets/0011-3'">VIEW</button>
+    </div>
+    <div class="lego-card">
+      <a href="https://rebrickable.com/sets/0011-2"><img class="lego-img" src="https://cdn.rebrickable.com/media/sets/0011-2.jpg" alt="Classic Town"></a>
+      <p>Classic Town</p>
+      <article>This is a lego set named Classic Town</article>
+      <button onclick="location.href='/lego/sets/0011-2'">VIEW</button>
+    </div>
+    <div class="lego-card">
+      <a href="https://rebrickable.com/sets/001-1"><img class="lego-img" src="https://cdn.rebrickable.com/media/sets/001-1.jpg" alt="Technic"></a>
+      <p>Technic</p>
+      <article>This is a lego set named Technic</article>
+      <button onclick="location.href='/lego/sets/001-1'">VIEW</button>
+    </div>
+  </div>
+  <!-- <div>
+    <a href="/lego/sets">All Sets</a>
+    <a href="/lego/sets/num-demo">Set Data</a>
+    <a href="/lego/sets/theme-demo">Theme Data</a>
+  </div> -->
+  <!-- <ul>
+    <li>        Course: WEB322</li>
+    <li>Assignment No.: 3</li>
+    <li>          Name: Sheng-Lin Yang</li>
+    <li>            ID: 160443222</li>
+  </ul> -->
+</body>
+</html>
