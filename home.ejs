@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
+  <link rel="stylesheet" href="/css/main.css">
+  <title>Lego Collection</title>
+  <style>
+    .lego-img {
+      width: 350px;
+      height: 250px;
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/navbar', {page: '/'}) %>
+
+  <div class="container mx-auto">
+    <div class="pt-4 rounded border-spacing-96 mb-6 bg-neutral-600 text-center">
+      <article>
+        <h1>Welcome to Explore the Lego Collection</h1>
+        <p>Pick back your childlike innocence, let's discover the world of lego.</p>
+        <button class="my-2 py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75" onclick="location.href='/lego/sets'">VIEW</button>
+      </article>
+    </div>
+
+    <div class="card-container grid grid-cols-3 gap-4">
+      <!-- Lego 1 -->
+      <div class="rounded border-slate-700 border-2 shadow-lg shadow-indigo-500/50">
+        <a href="https://rebrickable.com/sets/0011-3">
+        <div class="h-64">
+          <img class="lego-img rounded-t-lg" src="https://cdn.rebrickable.com/media/sets/0011-3.jpg" alt="Lion Knights"></a>
+        </div>
+        <div class="pl-4 pt-2 pb-2">
+          <p class="text-xl"><strong>Lion Knights</strong></p>
+          <article class="font-serif">This is a lego set named Lion Knights.</article>
+          <button class="my-2 py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75" onclick="location.href='/lego/sets/0011-3'">VIEW</button>
+        </div>
+      </div>
+
+      <!-- Lego 2 -->
+      <div class="rounded border-slate-700 border-2 shadow-lg shadow-indigo-500/50">
+        <a href="https://rebrickable.com/sets/0011-2">
+        <div class="h-64">
+          <img class="lego-img rounded-t-lg" src="https://cdn.rebrickable.com/media/sets/0011-2.jpg" alt="Classic Town"></a>
+        </div>
+        <div class="pl-4 pt-2 pb-2">
+          <p class="text-xl"><strong>Classic Town</strong></p>
+          <article class="font-serif">This is a lego set named Classic Town</article>
+          <button class="my-2 py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75" onclick="location.href='/lego/sets/0011-2'">VIEW</button>
+        </div>
+      </div>
+
+      <!-- Lego 3 -->
+      <div class="rounded border-slate-700 border-2 shadow-lg shadow-indigo-500/50">
+        <a href="https://rebrickable.com/sets/001-1">
+        <div class="h-64">
+          <img class="lego-img rounded-t-lg" src="https://cdn.rebrickable.com/media/sets/001-1.jpg" alt="Technic"></a>
+        </div>
+        <div class="pl-4 pt-2 pb-2">
+          <p class="text-xl"><strong>Technic</strong></p>
+          <article class="font-serif">This is a lego set named Technic</article>
+          <button class="my-2 py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75" onclick="location.href='/lego/sets/001-1'">VIEW</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

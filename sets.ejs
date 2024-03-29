@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>Lego Collection</title>
+  <!-- <style>
+    body {
+      background-color: black;
+    }
+  </style> -->
+</head>
+<body>
+  <%- include('partials/navbar', {page: '/lego/sets'}) %>
+
+  <div class="rounded border-spacing-72 mb-6 bg-green-400 dark:bg-green-900 mullet flex-col">
+    <div class="flex flex-col items-center justify-center">
+      <h1 class="text-3xl my-4">Collection</h1>
+      <p>Browse the entire collection. Click the theme to filter by themes such as: </p>
+      <div class="tabs tabs-boxed my-5">
+        <a href="/lego/sets" class="tab <%= (!theme) ? 'tab-active' : '' %>">ALL</a>
+        <a href="/lego/sets?theme=Technic" class="tab <%= (theme === 'Technic') ? 'tab-active' : '' %>">TECHNIC</a>
+        <a href="/lego/sets?theme=Classic Town" class="tab <%= (theme === 'Classic Town') ? 'tab-active' : '' %>">CLASSIC TOWN</a>
+        <a href="/lego/sets?theme=Basic Set" class="tab <%= (theme === 'Basic Set') ? 'tab-active' : '' %>">BASIC SET</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="overflow-x-auto">
+      <table class="table-zebra">
+        <thead>
+          <tr>
+            <th class="text-2xl">Image</th>
+            <th class="text-2xl">Name</th>
+            <th class="text-2xl">Theme</th>
+            <th class="text-2xl">Year</th>
+            <th class="text-2xl">Parts</th>
+            <th class="text-2xl">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% sets.forEach(set => { %>
+            <tr>
+              <td>
+                <div class="avatar">
+                  <div class="ml-3 size-32 rounded-xl text-center">
+                    <img src="<%= set.img_url %>" alt="<%= set.name %>">
+                  </div>
+                </div>
+              </td>
+              <td class="w-72 text-justify"><%= set.name %></td>
+              <td class="w-44 text-center"><a class="btn btn-active btn-neutral" href="/lego/sets?theme=<%= set.theme %>"><%= set.theme %></a></td>
+              <td class="w-24 text-center"><%= set.year %></td>
+              <td class="w-24 text-center"><%= set.num_parts %></td>
+              <td class="w-32 text-center"><a class="btn btn-active btn-link" href="/lego/sets/<%= set.set_num %>">Details</a></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

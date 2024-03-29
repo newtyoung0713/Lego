@@ -10,24 +10,6 @@ body {
   color: white;
 }
 
-.navbar a {
-  margin: 0 10px;
-}
-
-.sub-navbar {
-  display: flex;
-  margin: 0 10px;
-  position: fixed;
-  right: 0;
-}
-
-.sub-navbar-dropbox {
-  position: relative;
-  top: 100%;
-  left: 0;
-  z-index: 1;
-}
-
 .list {
   position: absolute;
   right: 0;

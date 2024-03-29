@@ -1,0 +1,21 @@
+<div class="navbar bg-base-100">
+  <div class="flex-1">
+    <a href="/" class="btn btn-ghost text-xl font-bold">Lego Collection</a>
+  </div>
+  <div class="flex-none z-50">
+    <ul class="menu menu-horizontal px-1">
+      <li><a class="<%= (page == '/lego/sets') ? 'active' : '' %>" href="/lego/sets">View Collection</a></li>
+      <li><a class="<%= (page == '/about') ? 'active' : '' %>" href="/about">About</a></li>
+      <!-- <li class="sub-navbar-dropbox">
+        <details>
+          <summary>Theme</summary>
+          <ul class="p-2 bg-base-100 right-0 list">
+            <a class="<%= (page == "/lego/sets") ? 'active' : '' %>" href="/lego/sets?theme=Lion Knights">Lion Knights</a>
+            <a class="<%= (page == "/lego/sets") ? 'active' : '' %>" href="/lego/sets?theme=Classic Town">Classic Town</a>
+            <a class="<%= (page == "/lego/sets") ? 'active' : '' %>" href="/lego/sets?theme=technic">Technic</a>
+          </ul>
+        </details>
+      </li> -->
+    </ul>
+  </div>
+</div>

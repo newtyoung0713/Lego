@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>About Lego Sets</title>
+</head>
+<body>
+  <%- include('partials/navbar', {page: '/lego/sets'}) %>
+
+  <div class="container mx-auto">
+    <!-- About I like -->
+    <div class="pb-2 rounded border-spacing-96 mb-6 bg-neutral-600 text-center">
+      <h1 class="text-5xl py-4"><%= set.name %></h1>
+      <p class="mb-4">Below, you will find detailed information about the set: <% set.name %></p>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+
+      <!-- About the lego -->
+      <div>
+        <img src="<%= set.img_url %>" alt="<%= set.name %>">
+      </div>
+      <div>
+        <p class="my-4">Year: <%= set.year %></p>
+        <p class="my-4">Theme: <%= set.theme %></p>
+        <p class="my-4">Parts: <%= set.num_parts %></p>
+        <p class="my-4" id="randomQuote"></p>
+        <div>
+          <button class="btn btn-active btn-neutral bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75" href="#" onclick="history.back(); return false;">Return</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+      fetch("https://quotable.io/random")
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('The Network Response Was NOT Well!');
+          }
+          return res.json();
+        })
+        .then(data => {
+          const quoteElement = document.getElementById('randomQuote');
+          quoteElement.innerHTML = `"${data.content}" — ${data.author}`;
+        })
+        .catch(error => console.error("Fetching Error quote", error));
+    /* TODO: "fetch" the data at: https://quotable.io/random and update an element in the DOM with the "content" and "author" */
+
+    });
+  </script>
+</body>
+</html>
