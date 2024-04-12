@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/main.css">
   <title>Lego Collection</title>
-  <!-- <style>
-    body {
-      background-color: black;
-    }
-  </style> -->
 </head>
 <body>
   <%- include('partials/navbar', {page: '/lego/sets'}) %>
@@ -51,7 +46,7 @@
                 </div>
               </td>
               <td class="w-72 text-justify"><%= set.name %></td>
-              <td class="w-44 text-center"><a class="btn btn-active btn-neutral" href="/lego/sets?theme=<%= set.theme %>"><%= set.theme %></a></td>
+              <td class="w-44 text-center"><a class="btn btn-active btn-neutral" href="/lego/sets?theme=<%= set.theme %>"><%= set.Theme.name %></a></td>
               <td class="w-24 text-center"><%= set.year %></td>
               <td class="w-24 text-center"><%= set.num_parts %></td>
               <td class="w-32 text-center"><a class="btn btn-active btn-link" href="/lego/sets/<%= set.set_num %>">Details</a></td>
