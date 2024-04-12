@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Lego Set</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <%- include('partials/navbar', {page: '/lego/addSet' }) %>
+
+  <div class="container mx-auto p-6 h-screen flex flex-col justify-between">
+    <form action="/lego/addSet" method="POST" id="addSet" class="flex-grow space-y-4">
+      <!-- name setting -->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="name" class="text-sm mb-1">Name:</label>
+        <input type="text" id="name" name="name" class="input input-bordered" required>
+        <div class="error text-red-500 text-sm text-left mt-1"></div>
+      </div>
+
+      <!-- year setting -->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="year" class="text-sm mb-1">Year:</label>
+        <input type="number" id="year" name="year" class="input input-bordered" required>
+        <div class="error text-red-500 text-sm text-left mt-1"></div>
+      </div>
+
+      <!-- number of part setting -->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="num_parts" class="text-sm mb-1">Number of Parts:</label>
+        <input type="number" id="num_parts" name="num_parts" class="input input-bordered" require>
+        <div class="error text-red-500 text-sm text-left mt-1"></div>
+      </div>
+
+      <!-- img_url setting -->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="img_url" class="text-sm mb-1">Image Url:</label>
+        <input type="url" id="img_url" name="img_url" class="input input-bordered" required>
+        <div class="error text-red-500 text-sm text-left mt-1"></div>
+      </div>
+
+      <!-- theme id setting -->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="theme_id" class="text-sm mb-1">Theme Id:</label>
+        <select id="theme_id" name="theme_id" class="select select-bordered" required>
+          <% themes.forEach(theme => { %>
+            <option value="<%= theme.id %>"><%= theme.name %></option>
+          <% }) %>
+        </select>
+        <div class="error text-red-500 text-sm text-left mt-1"></div>
+      </div>
+
+      <!-- number setting -->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="set_num" class="text-sm mb-1">Set Number:</label>
+        <input type="text" id="set_num" name="set_num" class="input input-bordered" required>
+        <div class="error text-red-500 text-sm text-left mt-1"></div>
+      </div>
+
+      <div class="flex flex-col mx-3.5 my-3.5 max-w-20">
+        <button type="submit" class="btn btn-sm btn-active btn-primary self-end">Submit</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('#addSet');
+      const inputs = form.querySelectorAll('input, select');
+      const currentYear = new Date().getFullYear();
+
+      inputs.forEach(input => {
+        input.addEventListener('input', () => {
+          validateField(input);
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (validateInputs()) {
+          form.submit();
+        }
+      });
+
+      function validateField(field) {
+        const fieldValue = field.value.trim();
+        if (field.id === 'year') {
+          validateYear(field);
+        } else {
+          (fieldValue === '') ? 
+          setErrorFor(field, `Please enter a ${field.previousElementSibling.innerText.toLowerCase()}`) :
+          setSuccessFor(field);
+        }
+      }
+
+      function setErrorFor(element, message) {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector('.error');
+        errorDisplay.innerText = message;
+        inputControl.classList.add('error');
+        inputControl.classList.remove('success');
+      }
+
+      function setSuccessFor(element) {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector('.error');
+        errorDisplay.innerText = '';
+        inputControl.classList.add('success');
+        inputControl.classList.remove('error');
+      }
+
+      function validateYear(field) {
+        const yearValue = parseInt(field.value, 10);
+        if (isNaN(yearValue) || yearValue < 1000 || yearValue > currentYear) {
+          setErrorFor(field, `Year must be between 1000 and ${currentYear}`);
+          return false;
+        } else {
+          setSuccessFor(field);
+          return true;
+        }
+      }
+
+      function validateInputs() {
+        let isValid = true;
+        inputs.forEach(input => {
+          const fieldValue = input.value.trim();
+          if (input.id === 'year') {
+            isValid = isValid && validateYear(input); // Check year specifically
+          } else if (fieldValue === '') {
+            setErrorFor(input, `Please enter a ${input.previousElementSibling.innerText.toLowerCase()}`);
+            isValid = false;
+          }
+        });
+        return isValid;
+      }
+    });
+  </script>
+</body>
+</html>

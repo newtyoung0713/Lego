@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internal Server Error</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+   <%- include('partials/navbar', {page: '500'}) %>
+
+  <div class="container mx-auto">
+
+    <div class="hero min-h-screen bg-base-200">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">500 - Internal Server Error</h1>
+          <img src="https://static.doofinder.com/main-files/uploads/2019/09/error-500-doofinder.jpg" alt="Image" class="mx-auto" width="880" height="420">
+          <p class="py-6"><%= message %></p>
+          <a href="/" class="btn btn-secondary">Home</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
