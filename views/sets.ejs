@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/main.css">
   <title>Lego Collection</title>
-  <!-- <style>
-    body {
-      background-color: black;
-    }
-  </style> -->
 </head>
 <body>
   <%- include('partials/navbar', {page: '/lego/sets'}) %>
@@ -19,10 +14,10 @@
       <h1 class="text-3xl my-4">Collection</h1>
       <p>Browse the entire collection. Click the theme to filter by themes such as: </p>
       <div class="tabs tabs-boxed my-5">
-        <a href="/lego/sets" class="tab <%= (!theme) ? 'tab-active' : '' %>">ALL</a>
-        <a href="/lego/sets?theme=Technic" class="tab <%= (theme === 'Technic') ? 'tab-active' : '' %>">TECHNIC</a>
-        <a href="/lego/sets?theme=Classic Town" class="tab <%= (theme === 'Classic Town') ? 'tab-active' : '' %>">CLASSIC TOWN</a>
-        <a href="/lego/sets?theme=Basic Set" class="tab <%= (theme === 'Basic Set') ? 'tab-active' : '' %>">BASIC SET</a>
+        <a href="/lego/sets" class="tab <%= (!theme) ? 'tab-active' : '' %>">All</a>
+        <% ['Technic', 'Classic Town', 'Basic Set'].forEach(themes => { %>
+          <a href="/lego/sets?theme=<%= themes %>" class="tab <%= theme === themes ? 'tab-active' : '' %>"><%= themes %></a>
+        <% }); %>
       </div>
     </div>
   </div>
@@ -51,7 +46,7 @@
                 </div>
               </td>
               <td class="w-72 text-justify"><%= set.name %></td>
-              <td class="w-44 text-center"><a class="btn btn-active btn-neutral" href="/lego/sets?theme=<%= set.theme %>"><%= set.theme %></a></td>
+              <td class="w-44 text-center"><a class="btn btn-active btn-neutral" href="/lego/sets?theme=<%= set.theme.name %>"><%= set.theme.name %></a></td>
               <td class="w-24 text-center"><%= set.year %></td>
               <td class="w-24 text-center"><%= set.num_parts %></td>
               <td class="w-32 text-center"><a class="btn btn-active btn-link" href="/lego/sets/<%= set.set_num %>">Details</a></td>

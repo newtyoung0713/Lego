@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Set - <%= set.name %></title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <%- include('partials/navbar', {page: ''}) %>
+
+  <div class="container mx-auto">
+    <form action = "/lego/editSet" method="POST">
+      <!-- Edit name -->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="name" class="text-sm mb-1">Name:</label>
+        <input type="text" id="name" name="name" class="input input-bordered" required value="<%= set.name %>">
+      </div>
+
+      <!-- Edit year-->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="year" class="text-sm mb-1">Year:</label>
+        <input type="number" id="year" name="year" class="input input-bordered" required value="<%= set.year %>">
+      </div>
+
+      <!-- Edit number of parts -->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="num_parts" class="text-sm mb-1">Number of parts:</label>
+        <input type="number" id="num_parts" name="num_parts" class="input input-bordered" required value="<%= set.num_parts %>">
+      </div>
+
+      <!-- Edit img-->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="img_url" class="text-sm mb-1">Image url:</label>
+        <input type="url" id="img_url" name="img_url" class="input input-bordered" required  value="<%= set.img_url %>">
+      </div>
+
+      <!-- Edit theme-->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="theme_id" class="text-sm mb-1">Theme id:</label>
+        <select id="theme_id" name="theme_id" class="select select-bordered" required>
+          <% themes.forEach(theme=>{ %>
+            <option value="<%= theme.id %>" <%= (set.theme_id == theme.id) ? 'selected' : '' %>>
+              <%= theme.name %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <!-- Edit number-->
+      <div class="flex flex-col mx-2.5 my-2.5">
+        <label for="set_num" class="text-sm mb-1">Set number:</label>
+        <input type="text" id="set_num" name="set_num" class="input input-bordered" required value="<%= set.set_num %>">
+      </div>
+
+      <div class="flex flex-row mx-3.5 my-3.5 max-w-32">
+        <button class="btn btn-primary self-end mx-2.5 my-2.5 " type="submit">Update Set</button>
+        <button class="btn btn-error self-end mx-2.5 my-2.5 " type="button" onclick="deleteSet('<%= set.set_num %>')">Delete Set</button>
+      </div>
+
+      <script>
+      function deleteSet(setNum) {
+        if (confirm('Do you consent to delete this set?')) {
+          window.location.href = '/lego/deleteSet/' + setNum;
+        }
+      }
+      </script>
+    </form>
+  </div>
+</body>
+</html>
